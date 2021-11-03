@@ -60,7 +60,7 @@ def build_df(event_lines):
     return events
 
 def output_to_html(events):
-    events[["date_parsed", "date", "artist", "line_full", "line_before", "line_after"]].sort_values("date_parsed", ascending=False).to_html("output.html")
+    events[["date_parsed", "date", "artist", "line_full", "line_before", "line_after"]].sort_values("date_parsed", ascending=False).to_html("dj-finder-output.html")
 
 def run():
     parsed_events = []

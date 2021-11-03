@@ -12,7 +12,7 @@ SAMPLE_SPREADSHEET_ID_input = '1FYdD43eZ8xzKlreqK8tygNljxglzlbg5Zp2imvbvtd0'
 SAMPLE_RANGE_NAME = 'A1:AA1000'
 
 
-def main():
+def get_data():
     global values_input, service
     creds = None
     if os.path.exists('token.pickle'):
@@ -43,5 +43,4 @@ def main():
 
     return df
 
-
-print(main())
+get_data()
