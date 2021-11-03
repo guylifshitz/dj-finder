@@ -3,6 +3,7 @@ from os import listdir
 from os.path import isfile, join
 import re
 import pandas as pd
+from datetime import datetime
 
 downloads_folder = "data/downloads"
 
@@ -60,7 +61,11 @@ def build_df(event_lines):
     return events
 
 def output_to_html(events):
-    events[["date_parsed", "date", "artist", "line_full", "line_before", "line_after"]].sort_values("date_parsed", ascending=False).to_html("dj-finder-output.html")
+    html_table = events[["date_parsed", "date", "artist", "line_full", "line_before", "line_after"]].sort_values("date_parsed", ascending=False).to_html()
+    with open("dj-finder-output.html", "w") as f:
+        dt_string = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        f.write(dt_string + "<br>")
+        f.write(html_table)
 
 def run():
     parsed_events = []
